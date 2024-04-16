@@ -12,7 +12,17 @@ dotenv.config({
 
 
 connectDB()
-
+    // return promises for connect mongodb using async functions
+    // so we handle this
+    .then(() => {
+        // start the server app with mongodb server
+        app.listen(process.env.PORT || 8000, () => {
+            console.log(`App is listening on port${process.env.PORT}`);
+        })
+    })
+    .catch((err) => {
+        console.log("MONGODB FAILED: " + err);
+    })
 
 
 
